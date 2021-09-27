@@ -1,5 +1,5 @@
 # Gracker - The Grocery Tracker
-#### v1.0 September 2021
+#### v1.0 (Under Development)
 
 ## Summary
 - Automates the gathering of grocery price data
@@ -28,9 +28,9 @@
     - e.g. `void testMethod()`
     - Braces follow the Kernighan and Ritchie style ("Egyptian brackets") for nonempty blocks and block-like constructs:
       - No line break before the opening brace.
-      - Line break after the opening brace.
-      - Line break before the closing brace.
-      - Line break after the closing brace, only if that brace terminates a statement or terminates the body of a method, constructor, or named class. For example, there is no line break after the brace if it is followed by else or a comma.
+      - Line-break after the opening brace.
+      - Line-break before the closing brace.
+      - Line-break after the closing brace, only if that brace terminates a statement or terminates the body of a method, constructor, or named class. For example, there is no line break after the brace if it is followed by else or a comma.
       - Examples:
     ```
     return () -> {
@@ -65,12 +65,12 @@
     - e.g. `Create configuration`
     - e.g. `Test Configuration`
     - e.g. `Delete Configuration`
-  - Methods should be written in tandem with unit, negative, and appropriate end to end testing
+  - Methods should be written in tandem with unit, negative, and appropriate end-to-end testing
     - After writing a test to perform as expected, make sure if it isn't configured as expected it fails
     - When catching exceptions, catch specific exceptions, log the error and throw a new exception so the test fails
     - Use logging frequently, it helps to quickly debug code and write tests (every method should have logging)
     - Add unit tests to try and break your method. 
-    - You wont always have an opportunity to add end to end testing, but add them where needed.
+    - You won't always have an opportunity to add end-to-end testing, but add them where needed.
         - Merge requests will be denied if appropriate testing isn't written 
   - Selenium code should use the Page Object Model making each page a class
     - Use inheritance to pull in common variables and methods for your product
