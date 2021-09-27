@@ -5,8 +5,8 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 
 public class Main {
     public static void main(String[] args) {
+        System.setProperty("webdriver.gecko.driver","src/main/resources/geckodriver.exe");
         WebDriver driver = new FirefoxDriver();
-        //TODO download geckodriver and assign system property
         driver.get("https://ensign.edu");
     }
 }
