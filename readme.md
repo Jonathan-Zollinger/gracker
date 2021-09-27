@@ -26,10 +26,39 @@
   - Methods should be verbs, and should follow a mixed case (aka "camel case") pattern, with the first letter of the
         first word in lower case.
     - e.g. `void testMethod()`
-  - Variables are similar to methods, in that they should follow a mixed case (aka "camel case") patter, with a
-        lowercase first letter.
-  - Constants should be all uppercase, with underscores replacing spaces.
-    - e.g. `int MAX_RETRY_COUNT = 5;`
+    - Braces follow the Kernighan and Ritchie style ("Egyptian brackets") for nonempty blocks and block-like constructs:
+      - No line break before the opening brace.
+      - Line break after the opening brace.
+      - Line break before the closing brace.
+      - Line break after the closing brace, only if that brace terminates a statement or terminates the body of a method, constructor, or named class. For example, there is no line break after the brace if it is followed by else or a comma.
+      - Examples:
+    ```
+    return () -> {
+      while (condition()) {
+        method();
+      }
+    };
+    
+    return new MyClass() {
+      @Override public void method() {
+        if (condition()) {
+          try {
+            something();
+          } catch (ProblemException e) {
+            recover();
+          }
+        } else if (otherCondition()) {
+          somethingElse();
+        } else {
+          lastThing();
+        }
+      }
+    };
+     ```
+    - Variables are similar to methods, in that they should follow a mixed case (aka "camel case") patter, with a
+          lowercase first letter.
+    - Constants should be all uppercase, with underscores replacing spaces.
+      - e.g. `int MAX_RETRY_COUNT = 5;`
 
 ## Coding Standards
   - Methods should only test one thing (not always possible)
