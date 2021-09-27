@@ -122,7 +122,8 @@ public class Store {
     public void headerSetUp() {
         //fields
         List<Object> rulesOnDisk = new ArrayList<Object>();
-        File fiddlerCustomRulesFile =
+        File fiddlerCustomRulesFile =//todo figure if / how to get this to work for sites like Smiths
+                                    //todo make this CustomRules file path reference relative to gracker
                 new File("C:\\Users\\jonat\\OneDrive\\Documents\\Fiddler2\\Scripts\\CustomRules.js");
         Scanner existingRules = null;
         try {
