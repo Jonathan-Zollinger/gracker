@@ -83,9 +83,8 @@ public class Store {
     public String toString() {
         HashMap<String, Object> properties = this.getProperties();
         StringBuilder stringBuilder = new StringBuilder();
-        properties.keySet().forEach(property -> {
-            stringBuilder.append(String.format("\n%20s:%s", property, properties.get(property)));
-        });
+        properties.keySet().forEach(property ->
+                stringBuilder.append(String.format("\n%20s:%s", property, properties.get(property))));
         return stringBuilder.toString();
     }
 
@@ -115,13 +114,13 @@ public class Store {
         log.info(String.format("waiting for the following to be clickable:%s", selector.toString()));
         wait.until(webDriver -> driver.findElement(selector.getBy()));
         driver.findElement(selector.getBy()).click();
-        log.info(String.format("Successfully clicked the following:%s", selector.toString()));
+        log.info(String.format("Successfully clicked the following:%s", selector));
     }//end Click(Selector)
 
 
     public void headerSetUp() {
         //fields
-        List<Object> rulesOnDisk = new ArrayList<Object>();
+        List<Object> rulesOnDisk = new ArrayList<>();
         File fiddlerCustomRulesFile =
                 new File("C:\\Users\\jonat\\OneDrive\\Documents\\Fiddler2\\Scripts\\CustomRules.js");
         Scanner existingRules = null;
@@ -158,7 +157,7 @@ public class Store {
         newRules.close();
     }//end headerSetUp()
 
-    private class Selector {
+    private static class Selector {
         /* --------------------------------------------------- Fields ---------------------------------------------- */
         private By by;
         private String displayName;
