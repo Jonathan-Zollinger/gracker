@@ -1,38 +1,54 @@
 package com.gracker.model.store;
 
-import static org.junit.jupiter.api.Assertions.*;
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.Test;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+
+import java.util.Objects;
 
 class StoreTest {
+    String schoolLibraryURL = "https://library.ensign.edu/";
+    Store defaultConstructorStore;
+    Store constructorStoreWithURL;
 
     @org.junit.jupiter.api.BeforeEach
     void setUp() {
-    }
-
-    @org.junit.jupiter.api.Test
-    void getProperties() {
+        defaultConstructorStore = new Store();
+        constructorStoreWithURL = new Store(schoolLibraryURL);
     }
 
     @org.junit.jupiter.api.Test
     void getHomeURL() {
+        assert(Objects.equals(schoolLibraryURL, constructorStoreWithURL.getHomeURL()));
+        assert(null == defaultConstructorStore.getHomeURL());
     }
 
-    @org.junit.jupiter.api.Test
+    @Test
     void setHomeURL() {
-    }
-
-    @org.junit.jupiter.api.Test
-    void testToString() {
+        //tests constructors
+        String shortestEnsignSiteReference = "ensign.edu";
+        String shorterEnsignSiteReference = "www.ensign.edu";
+        constructorStoreWithURL.setHomeURL(shortestEnsignSiteReference);
+        defaultConstructorStore.setHomeURL(shorterEnsignSiteReference);
+        assert(Objects.equals(shortestEnsignSiteReference, constructorStoreWithURL.getHomeURL()));
+        assert(Objects.equals(shorterEnsignSiteReference, defaultConstructorStore.getHomeURL()));
     }
 
     @org.junit.jupiter.api.Test
     void click() {
+        constructorStoreWithURL.Click(By.linkText("FAQs"));
+        assert((schoolLibraryURL + "faq").equals(
+                ((WebDriver) constructorStoreWithURL.getProperties().get("driver")).getCurrentUrl()));
+        defaultConstructorStore.setHomeURL("https://www.ensign.edu/");
+        defaultConstructorStore.Click(By.linkText("Degrees & Certificates"));
+        assert(("https://www.ensign.edu/degrees-certificates").equals(
+                ((WebDriver) defaultConstructorStore.getProperties().get("driver")).getCurrentUrl()));
     }
 
-    @org.junit.jupiter.api.Test
-    void testClick() {
-    }
-
-    @org.junit.jupiter.api.Test
-    void headerSetUp() {
+    @AfterEach
+    void tearDown() {
+        constructorStoreWithURL.closeBrowser();
+        defaultConstructorStore.closeBrowser();
     }
 }

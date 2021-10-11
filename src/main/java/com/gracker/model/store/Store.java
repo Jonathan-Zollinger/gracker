@@ -20,13 +20,15 @@ public class Store {
     private String homeURL;
     private final WebDriver driver;
     private final Logger log = LogManager.getLogger(this.getClass());
+    private final String geckoDriverFilePath = "src/main/resources/geckodriver-v0.30.0-win64.exe";
+
     /* ------------------------------------------------ Constructors ----------------------------------------------- */
 
     /**
      * Default Constructor with void fields
      */
     Store() {
-        System.setProperty("webdriver.gecko.driver","pathtofile");
+        System.setProperty("webdriver.gecko.driver", geckoDriverFilePath);
         driver = new FirefoxDriver();
     }
 
@@ -36,6 +38,7 @@ public class Store {
      * @param homeURL current value for the homeURL field.
      */
     public Store(String homeURL) {
+        System.setProperty("webdriver.gecko.driver", geckoDriverFilePath);
         driver = new FirefoxDriver();
         this.homeURL = homeURL;
     }
@@ -117,11 +120,18 @@ public class Store {
         log.info(String.format("Successfully clicked the following:%s", selector));
     }//end Click(Selector)
 
+    /**
+     *  helper method for closing the browser at the end of the program
+     */
+    public void closeBrowser(){
+        driver.close();
+    }//end closeBrowser()
+
 
     public void headerSetUp() {
         //fields
         List<Object> rulesOnDisk = new ArrayList<>();
-        File fiddlerCustomRulesFile =
+        File fiddlerCustomRulesFile = //TODO: make this relative to source folder
                 new File("C:\\Users\\jonat\\OneDrive\\Documents\\Fiddler2\\Scripts\\CustomRules.js");
         Scanner existingRules = null;
         try {
@@ -191,16 +201,6 @@ public class Store {
         }//end getDisplayName()
 
 
-//        @Override
-//        public String toString() {
-//            HashMap<String, Object> properties = this.getProperties();
-//            StringBuilder stringBuilder = new StringBuilder();
-//            properties.keySet().forEach(property -> {
-//                stringBuilder.append(String.format("\n%20s:%s", property, properties.get(property)));
-//            });
-//            return stringBuilder.toString();
-//        }
-
         /* -------------------------------------------------- Setters ---------------------------------------------- */
 
         /**
@@ -220,5 +220,8 @@ public class Store {
         public void setDisplayName(String displayName) {
             this.displayName = displayName;
         }//end setDisplayName()
+
+        /* -------------------------------------------------- Methods ---------------------------------------------- */
+
     }// end Selector class
 }
