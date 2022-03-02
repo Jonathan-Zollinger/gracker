@@ -157,8 +157,8 @@
   - This project uses GitFlow. For an in depth overview of GitFlow, check [here](https://www.atlassian.com/git/tutorials/comparing-workflows/gitflow-workflow).
   - In summary, branch off of develop, merge into develop when a feature/bugfix/thing is complete.
 
-## GitLab
-  - Our merge requests and code reviews will be done using GitLab's tools.
+## GitHub
+  - Our merge requests and code reviews will be done using Github's tools.
   - The master branch is protected.
   - The develop branch is our mainline development branch.
 
