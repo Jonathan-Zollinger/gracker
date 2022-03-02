@@ -1,5 +1,5 @@
 # Gracker - The Grocery Tracker
-#### v1.0 September 2021
+#### v0.0.1 September 2021
 
 ## Summary
 - Automates the gathering of grocery price data
